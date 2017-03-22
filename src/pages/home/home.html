@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Status Watcher
+      Status Watcher
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,37 +9,31 @@
 <ion-content>
   <ion-list inset>
     <ion-item>
-      <ion-label>Application</ion-label>
-      <ion-input [(ngModel)]="application" type="text"></ion-input>
+      <ion-label>Anwendung</ion-label>
+      <ion-input [(ngModel)]="anwendung" type="text"></ion-input>
     </ion-item>
   </ion-list>
   <div padding>
     <button ion-button block (click)="getStatus()">Hole Status</button>
   </div>
-  <!--<ion-card>
-    <ion-card-header>
-      Versionsnummer
-    </ion-card-header>
-    <ion-card-content>
-      {{ status.version }}
-    </ion-card-content>
-    <ion-card-header>
-      Anzahl Templates im Cache
-    </ion-card-header>
-    <ion-card-content>
-      {{ status.anzahlTemplatesImCache }}
-    </ion-card-content>
-        <ion-card-header>
-      Status Services
-    </ion-card-header>
-    <ion-card-content>
-      {{ status.servicesStatus }}
-    </ion-card-content>
-    <ion-card-header>
-      Status Dialog
-    </ion-card-header>
-    <ion-card-content>
-      {{ status.dialogStatus }}
-    </ion-card-content>
-  </ion-card>-->
+  <ion-list *ngFor="let stat of status">
+    <ion-list-header>
+      Version
+    </ion-list-header>
+    <ion-item>
+      {{stat.version}}
+    </ion-item>
+    <ion-list-header>
+      Dialog Status
+    </ion-list-header>
+    <ion-item>
+      {{stat.dialogStatus}}
+    </ion-item>
+    <ion-list-header>
+      Service Status
+    </ion-list-header>
+    <ion-item>
+      {{stat.serviceStatus}}
+    </ion-item>
+  </ion-list>
 </ion-content>

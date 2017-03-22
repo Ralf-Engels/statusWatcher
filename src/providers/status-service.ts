@@ -3,20 +3,22 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the StatusData provider.
+  Generated class for the StatusService provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class StatusDataService {
+export class StatusService {
 
   constructor(public http: Http) {
-    console.log('Constructor: Hello StatusData Provider');
+    console.log('StatusService: Hello StatusService Provider');
   }
-  getStatus(application){
-    let status = this.http.get('https://kundenportal-imt2.provinzial.com/vertrag/status');
+
+  getStatus(anwendung){
+    let status = this.http.get('http://echo.jsontest.com/version/v1.0.0/dialogStatus/up/serviceStatus/up');
     return status;
+    
   }
 
 }

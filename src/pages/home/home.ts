@@ -1,34 +1,27 @@
 import { Component } from '@angular/core';
-
 import { NavController } from 'ionic-angular';
-
-// Import the Service made under provider
-import { StatusDataService } from '../../providers/status-data';
-
+import { StatusService } from '../../providers/status-service';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  // Add the Provider as Propertie
-  providers: [StatusDataService]
+  providers: [StatusService]
 })
 export class HomePage {
-  
-  public status;
-  public application;
 
-  // Add Service to Constructor
-  constructor(public navCtrl: NavController, private statusData: StatusDataService) {
+  public status;
+  public anwendung :string;
+
+  constructor(public navCtrl: NavController, private statusService: StatusService) {
     
   }
-  // define a Method to reach the Service 
-  getStatus(){
-    this.statusData.getStatus(this.application).subscribe(
-      data => {
-        this.status = data.json();
-      },
-      err => console.error(err),
-      () => console.log('get Status von' + this.application + 'completed')
-     );
-  }
+    getStatus(){
+      this.statusService.getStatus(this.anwendung).subscribe(
+        data => {
+          this.status = [data.json()];
+        },
+        err => console.error('Fehler aus StatusService:' + err),
+        () => console.log('getStatus completed for ' + this.anwendung)
+      )
+    }
 }
