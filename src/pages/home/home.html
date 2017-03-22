@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Status Watcher
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item>
+      <ion-label>Anwendung</ion-label>
+      <ion-input [(ngModel)]="anwendung" type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="getStatus()">Hole Status</button>
+  </div>
+  <ion-list *ngFor="let stat of status">
+    <ion-list-header>
+      Version
+    </ion-list-header>
+    <ion-item>
+      {{stat.version}}
+    </ion-item>
+    <ion-list-header>
+      Dialog Status
+    </ion-list-header>
+    <ion-item>
+      {{stat.dialogStatus}}
+    </ion-item>
+    <ion-list-header>
+      Service Status
+    </ion-list-header>
+    <ion-item>
+      {{stat.serviceStatus}}
+    </ion-item>
+  </ion-list>
+</ion-content>
